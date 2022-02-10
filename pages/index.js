@@ -1,10 +1,16 @@
 import styles from './index.module.scss';
 import Image from 'next/image';
+import Head from 'next/head';
 
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>The Cutting Slab</title>
+        <meta name="The Cutting Slab" content="We Cut Bread" />
+        <link rel="icon" href="favico.ico?v=4" />
+      </Head>
       <nav className={styles.navbar}>
         <div className={styles.logo}>
           <Image

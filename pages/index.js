@@ -44,7 +44,7 @@ export default function Home() {
             {"We are the world's first foremost bread cutting storefront in all of Canada."}
           </p>
           <p>
-            {"We specializing in cutting every variety of bread. If we can't cut it, you shouldn't eat it."}
+            {"We specialize in cutting every variety of bread. If we can't cut it, you shouldn't eat it."}
           </p>
           <p>Our world-class state-of-the-art advanced science technologies are able and willing to slice with accuracy and bravado.</p>
         </div>   

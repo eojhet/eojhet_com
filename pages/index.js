@@ -30,7 +30,7 @@ export default function Home() {
           <div className={styles.image}>
             <Image
               src="/images/storefront.jpg"
-              alt="The Cutting Slab"
+              alt="The Cutting Slab Store Front"
               width={1920}
               height={1277}
             />
@@ -54,7 +54,7 @@ export default function Home() {
         <div>
           <Image
             src="/images/jumpingknifejack.jpg"
-            alt="The Cutting Slab"
+            alt="The Amazing Jumping Knife Jack"
             width={1282}
             height={1920}
           />
@@ -66,28 +66,28 @@ export default function Home() {
           <p>{"Don't you love bread?"}</p>
           <Image
             src="/images/bread1.jpg"
-            alt="The Cutting Slab"
+            alt="Bread"
             width={640}
             height={399}
           />
           <p>{"Don't you love it sliced?"}</p>
           <Image
             src="/images/bread2.jpg"
-            alt="The Cutting Slab"
+            alt="More Bread"
             width={640}
             height={426}
           />
           <p>{"It just looks so good doesn't it?"}</p>
           <Image
             src="/images/bread3.jpg"
-            alt="The Cutting Slab"
+            alt="Yummy Bread"
             width={640}
             height={424}
           />
           <p>{"Oh you want that so bad don't you?"}</p>
           <Image
             src="/images/bread4.jpg"
-            alt="The Cutting Slab"
+            alt="Lovely Bread"
             width={640}
             height={426}
           />

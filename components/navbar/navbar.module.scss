@@ -1,0 +1,39 @@
+// navbar
+
+.nav {
+  background-color: #1a1a1a;
+  color: #eee;
+  height: 3.2rem;
+
+  .container {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.2rem 0.5rem 0 0.5rem;
+    max-width: 768px;
+    margin: auto;
+
+    .hamburger {
+      cursor: pointer;
+
+      .top,
+      .middle,
+      .bottom {
+        height: 0.12rem;
+        width: 2.5rem;
+        background-color: #eaeaea;
+        display: block;
+        border-radius: 2px;
+        margin: 0.6rem 0;
+      }
+    }
+
+    h3 {
+      font-size: 1em;
+      display: inline;
+      padding: 0 0.2rem;
+    }
+
+  }
+}

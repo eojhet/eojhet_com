@@ -8,10 +8,8 @@
     flex: 1;
     flex-direction: row;
     overflow: hidden;
-    padding: 2rem;
     justify-content: space-around;
-    gap: 1rem;
-    max-width: 1440px;
+    max-width: 1600px;
     margin: auto;
     
     a {
@@ -22,24 +20,43 @@
     .left {
       display: flex;
       flex-direction: column;
-      min-width: 200px;
-      max-width: 300px;
-      padding: 0 0.5rem;
-      
+      max-width: 25%;
+      padding-right: 1rem;
+
+      .profileContainer {
+        // background: linear-gradient(180deg, rgba(2,26,26,1) 0%, rgba(222,222,222,0) 100%); 
+        display: flex;
+        flex-direction: column;
+      }
+
+      .profile {
+        border-radius: 100%;
+        align-self: center;
+        box-shadow: 0 0 20px 5px rgba(68, 68, 68, 0.5);
+        margin: 3rem 0;
+        align-self: center;
+      }
+
+      .leftContent {
+        padding-left: 0.5rem;
+      }
     }
 
     .right {
       display: flex;
       flex-direction: column;
-      width: 200px;
-      padding: 0 0.5rem;
+      max-width: 15%;
+      padding-left: 1rem;
     }
     
     .center {
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      max-width: 500px;
+      max-width: 60%;
+      border-left: 1px solid #444;
+      border-right: 1px solid #444;
+      padding: 0 3rem;
 
     }
     
@@ -48,25 +65,29 @@
     }
 
     .card {
-      border: 1px solid #00abb1;
+      border: 1px solid #aaa;
       min-height: 200px;
-      padding: 0.5rem;
       display: flex;
       flex-direction: row;
       cursor: pointer;
+      background-color: #222;
 
       &:hover,
       &:active {
         background-color: #eeeeee;
-        border-color: lightblue;
+        border-color: #444;
       }
 
       .cardDescription {
         flex-basis: 70%;
+        padding: 0.5rem;
+        background-color: #fff;
       }
 
-      .cardPicture {
+      .cardPictureContainer {
         flex-basis: 30%;
+        align-self: center;
+        display: block;
       }
 
     }
@@ -89,16 +110,21 @@
       flex-direction: column;
 
       .left {
-        min-width: 100%;
         max-width: 100%;
+        padding: 0;
       }
 
       .center {
         max-width: 100%;
+        border-left: none;
+        border-right: none;
+        padding: 0 0.2rem;
       }
 
       .right {
-        width: 100%;
+        max-width: 100%;
+        padding: 3rem 0;
+        text-align: center;
       }
     }
   }

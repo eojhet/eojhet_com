@@ -1,7 +1,10 @@
 
 .footer {
-  padding: 2rem 1rem;
+  padding: 1.2rem 1rem;
   background-color: #1a1a1a;
   color: #bbb;
-  text-align: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 }

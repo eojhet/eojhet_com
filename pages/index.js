@@ -17,10 +17,10 @@ export default function Home () {
               src="/home/deepFriedLite.png"/>
           </div>
           <div className={styles.leftContent}>
-            <h2>About Me:</h2>
             <div className={styles.leftContent}>
+              <h2>About Me:</h2>
               <p>My name is Joe Gonzalez.</p>
-              <p>I am a web developer based out of Norfolk, Virginia.</p>
+              <p>I am a web developer based in Norfolk, Virginia.</p>
               <p>I love working with JavaScript, HTML, CSS, React, Nodejs and much more!</p>
               <p>Please feel free to <a href="mailto:admin@eojhet.com"><strong>Contact Me</strong></a> for questions, comments, or if you are hiring.</p>
               <p>Thank you so much for visiting!</p>

@@ -31,7 +31,7 @@ export default function Home () {
 
         <div className={styles.center}>
           <div className={styles.title}>
-            <h1>{'"CONTENT"...'}</h1>
+            <h1>Content...</h1>
           </div>
           <Link href="./cuttingslab"><div className={styles.card}>
             <div className={styles.cardDescription}>

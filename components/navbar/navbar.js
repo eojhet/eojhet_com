@@ -32,38 +32,17 @@ export default function Navbar () {
             <span className={styles.bottom}></span>
           </div>
           <ReactModal
+            // closeTimeoutMS={500}
             isOpen={menu}
             onRequestClose={handleHamburger}
             ariaHideApp={false}
             contentLabel="Menu Options"
-            style={{
-              overlay: {
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: 'rgba(255, 255, 255, 0.1)'
-              },
-              content: {
-                position: 'fixed',
-                top: '3.2rem',
-                left: '0',
-                right: '0',
-                bottom: '0',
-                border: '1px solid #ccc',
-                background: '#fff',
-                overflow: 'auto',
-                WebkitOverflowScrolling: 'touch',
-                borderRadius: '4px',
-                outline: 'none',
-                padding: '20px',
-                textAlign: 'right',
-              }
-            }}       
+            className
+            overlayClassName    
           >
             <div>
-              <p>Asses Exploding</p>
+              <div onClick={handleHamburger} className="modalClose"><span className="x1"/><span className="x2"/></div>
+              <h2>MENU</h2>
               <p><Link href="/"><a onClick={handleHamburger}>Home</a></Link></p>
               <p><Link href="/cuttingslab"><a onClick={handleHamburger}>The Cutting Slab</a></Link></p>
               <p>GOATS</p>

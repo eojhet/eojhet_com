@@ -29,3 +29,63 @@ p {
 ul {
   list-style: none;
 }
+
+.ReactModal__Content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  padding: 3.2rem 2rem;
+  color: white;
+  background-color: #444;
+}
+
+.ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(238, 238, 238, 0);
+}
+
+.x1, .x2 {
+  position: fixed;
+  top: 2.5rem;
+  right: 2rem;
+  height: 0.1rem;
+  width: 2.5rem;
+  background-color: #eaeaea;
+  margin: 0.6rem 0;
+}
+
+.x1 {
+  transform: rotate(-45deg);
+}
+
+.x2 {
+  transform: rotate(45deg);
+}
+
+.modalClose {
+  position: fixed;
+  top: 1.75rem;
+  right: 1.75rem;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+
+  .ReactModal__Content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  }
+  
+}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./footer.module.scss";
 
 export default function Footer () {
@@ -12,7 +13,7 @@ export default function Footer () {
         <a href="https://www.linkedin.com/in/joseph-gonzalez-0844b947/" target="_blank"><img src="/home/linkedin.png" alt="linkedin" width="35px"/></a>
       </div>
       <div className={styles.copyright}>
-        &copy;eojhet 2022
+        <Link href="/">&copy;eojhet 2022</Link>
       </div>
     </footer>
   )

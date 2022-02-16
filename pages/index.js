@@ -22,6 +22,7 @@ export default function Home () {
               <p>My name is Joe Gonzalez.</p>
               <p>I am a web developer based in Norfolk, Virginia.</p>
               <p>I love working with JavaScript, HTML, CSS, React, Nodejs and much more!</p>
+              <p>I will be updating this site fequently with new content so check back regularly.</p>
               <p>Please feel free to <a href="mailto:admin@eojhet.com"><strong>Contact Me</strong></a> for questions, comments, or if you are hiring.</p>
               <p>Thank you so much for visiting!</p>
             </div>
@@ -46,20 +47,7 @@ export default function Home () {
               />
             </div>
           </div></Link>
-          <Link href="./cuttingslab"><div className={styles.card}>
-            <div className={styles.cardDescription}>
-              <h2>The Cutting Slab</h2>
-              <p>{"Come have a taste of your favorite bread at the home The Cutting Slab. We will cut your bread to perfection!"}</p>
-            </div>
-            <div className={styles.cardPictureContainer}>
-              <Image
-                src="/images/jumpingknifejack.jpg"
-                alt="The Amazing Jumping Knife Jack"
-                width={1282}
-                height={1920}
-              />
-            </div>
-          </div></Link>
+         
         </div>
 
         <div className={styles.right}>

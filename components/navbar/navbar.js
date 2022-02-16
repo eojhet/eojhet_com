@@ -45,7 +45,6 @@ export default function Navbar () {
               <h2>MENU</h2>
               <p><Link href="/"><a onClick={handleHamburger}>Home</a></Link></p>
               <p><Link href="/cuttingslab"><a onClick={handleHamburger}>The Cutting Slab</a></Link></p>
-              <p>GOATS</p>
             </div>
           </ReactModal>
         </div>

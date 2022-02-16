@@ -30,7 +30,7 @@ ul {
   list-style: none;
 }
 
-.ReactModal__Content {
+.modalContent {
   position: fixed;
   top: 0;
   right: 0;
@@ -41,7 +41,7 @@ ul {
   background-color: #444;
 }
 
-.ReactModal__Overlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;

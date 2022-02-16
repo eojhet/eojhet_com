@@ -37,8 +37,8 @@ export default function Navbar () {
             onRequestClose={handleHamburger}
             ariaHideApp={false}
             contentLabel="Menu Options"
-            className
-            overlayClassName    
+            className="modalContent"
+            overlayClassName="modalOverlay"
           >
             <div>
               <div onClick={handleHamburger} className="modalClose"><span className="x1"/><span className="x2"/></div>

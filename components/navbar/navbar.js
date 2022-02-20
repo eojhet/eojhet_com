@@ -17,7 +17,7 @@ export default function Navbar () {
       <Head>
         <title>Eojhet</title>
         <meta name="Eojhet" content="I am Joe" />
-        <link rel="icon" href="favico.ico?v=4" />
+        <link rel="icon" href="favicon.ico?v=5" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" /> 

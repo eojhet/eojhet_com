@@ -1,63 +1,129 @@
 // The Cutting Slab
 
 .banner {
-  padding: 1rem 0.5rem 0 0.5rem;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;  
-  justify-content: space-between;
-  border-bottom: 2px solid rgba(255, 200, 200, 0.1);
-  background-color: rgba(255,200,200,0.5);
-  box-shadow: 0 0 6px rgba(255,200,200,0.5);
-  color: #444;
-  max-width: 768px;
-  margin: auto;
+  flex-direction: column;
+  
 
-  p {
-    font-size: large;
+  .bannerElements {
+    position: absolute;
+    padding: 1rem 0.5rem 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6871614856880253) 50%, rgba(255,255,255,0) 100%);
+
+    .svgLogo {
+      width: 50%;
+      max-width: 50rem;
+      margin-top: 10rem;
+    }
+
+    .title {
+      color: white;
+      text-shadow: 1px 1px 5px #333;
+    }
+
+  }
+
+  .storefrontPic {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
 .container {
-  background-color: #fff;
-  box-shadow: 0 0 5px hsla(0, 0%, 27%, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-bottom: 4rem;
-  box-shadow: 0 0 10px inset hsla(0, 0%, 27%, 0.9);  
-  max-width: 768px;
-  margin: auto;
 
   .welcome {
-    background-color: hsla(219, 100%, 80%, 0.2);
-    padding: 1rem;
+    padding: 4rem 1rem;
     text-align: center;
     color: #333;
   }
-  //@media only screen and (min-width: 600px)
 
-  .jackhead {
-    padding: 1rem;
-    text-align: center;
-  }
+  .jackContainer {
+    width: 100%;
+    height: 90vh;
+    max-height: 100vh;
+    background-color: #222;
+    color: #eee;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 
-  .afterjack {
-    padding: 1rem;
-    margin-bottom: 2rem;
-
-    p {
+    .jackhead {
+      padding: 1rem;
       text-align: center;
+    }
+
+    .jack {
+      max-width: 50%;
+      max-height: 80vh;
+      border: 10px solid #ddd;
+    }
+
+    .afterjack {
+      padding: 1rem;
+      margin-bottom: 2rem;
+
+      p {
+        text-align: center;
+      }
     }
   }
 
   .breads {
     display: flex;
+    flex: 1;
     flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
     text-align: center;
     font-style: italic;
-    background-color: hsla(219, 100%, 80%, 0.2);
-    margin-bottom: 4rem;
+
+    .breadCard {
+      width: 100%;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
 
     p {
-      padding: 0.2rem 0;
+      padding: 1rem 0;
     }
   }
+
+  .cuttingSlabBottom {
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    .jackContainer {
+      padding: 0.5rem 0;
+      flex-direction: column;
+      .jack {
+        border-radius: inherit;
+        max-width: inherit;
+        width: 100%;
+        box-shadow: none;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+
+  }  
 }

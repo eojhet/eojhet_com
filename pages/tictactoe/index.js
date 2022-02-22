@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 
 const winningLines = [
@@ -10,29 +10,44 @@ const winningLines = [
   [2, 5, 8],
   [0, 4, 8],
   [2, 4, 6],
-]
+];
+
+const stopMessage = [
+  "Stop that.",
+  "Stop doing that.",
+  "There is no reason!",
+  "Please",
+  "Stahp",
+  "You have no right.",
+  "I'm over this!",
+  "Click function revoked."
+];
 
 export default function Tictactoe () {
   const [xTurn, setXTurn] = useState(true);
   const [gameOn, setGameOn] = useState(true);
+  const [status, setStatus] = useState('X Goes First');
+  const [turnNum, setTurnNum] = useState(0);
+  const [messageCount, setMessageCount] = useState(0);
 
   const handleAction = (e) => {
     if (gameOn && e.target.innerHTML === "") {
       xTurn ? e.target.innerHTML = "X" : e.target.innerHTML = "O";
       setXTurn(!xTurn);
-      handleSurvey();
+      !xTurn ? setStatus("X Goes Next") : setStatus("O Goes Next");
+      setTurnNum(turnNum + 1);
+      if (turnNum === 8) {
+        setGameOn(false);
+        setStatus("CAT'S GAME, YOU LOSE");
+      }
+      handleScore();
     }
   }
 
-  const toggleTurn = () => {
-    setXTurn(!xTurn);
-  }
-
-  const handleSurvey = () => {
+  const handleScore = () => {
     let result = [];
     let x = [];
     let o = [];
-    let winner
 
     for (let i = 0; i < 9; i++) {
       result.push(document.getElementById(i).innerHTML);
@@ -49,8 +64,8 @@ export default function Tictactoe () {
         && x.includes(winningLines[i][2])
         ){
           console.log(i);
-          winner='X winner';
           setGameOn(false);
+          setStatus('X is Winner!');
           break;
         }
     }
@@ -66,24 +81,35 @@ export default function Tictactoe () {
         && o.includes(winningLines[i][2])
         ){
           console.log(i);
-          winner='O winner';
           setGameOn(false);
+          setStatus('O is Winner!');
           break;
         }
     }
-    document.getElementById("info").innerHTML = gameOn ? xTurn ? "O's Move" : "X's Move" : winner;
   }
 
   const handleNewGame = () => {
     for (let i = 0; i < 9; i++) {
       document.getElementById(i).innerHTML = '';
-      setGameOn(true);
-
     }
+    setGameOn(true);
+    setXTurn(true);
+    setTurnNum(0);
+    setStatus("X Goes First")
   }
+
+  const handleStatusClick = (e) => {
+    if (messageCount !== stopMessage.length) {
+      let oldStatus = status;
+      setStatus(stopMessage[messageCount]);
+      setTimeout( () => {setStatus(oldStatus)}, 800);
+      setMessageCount(messageCount + 1);
+    }
+  };
 
   return (
     <div className={styles.container}>
+      <div className={styles.status} onClick={handleStatusClick}>{status}</div>
       <div className={styles.gridContainer}>
         <div id="0" onClick={handleAction} className={styles.gridItem}/>
         <div id="1" onClick={handleAction} className={styles.gridItem}/>
@@ -95,9 +121,7 @@ export default function Tictactoe () {
         <div id="7" onClick={handleAction} className={styles.gridItem}/>
         <div id="8" onClick={handleAction} className={styles.gridItem}/>
       </div>
-      <div onClick={toggleTurn}>{xTurn ? "True" : "False"}</div>
-      <button onClick={handleNewGame}>NEW GAME</button>
-      <div id="info">X goes first</div>
+      <button onClick={handleNewGame} className={styles.newGame}>NEW GAME</button>
     </div>
   )
 }

@@ -15,7 +15,7 @@ export default function Home () {
           <Link href="./tictactoe"><div className={styles.card}>
             <div className={styles.cardDescription}>
               <h2>Tic-Tac-Toe</h2>
-              <p>{"Play with yourself, or make friends with an older man in the park and enjoy this amazing rendition of Tic-Tac-Toe!"}</p>
+              <p>{"Play with yourself or make friends with an older man in the park and enjoy this amazing rendition of Tic-Tac-Toe!"}</p>
             </div>
             <div className={styles.cardPictureContainer}>
               <Image

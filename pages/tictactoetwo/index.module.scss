@@ -1,0 +1,57 @@
+// tictactoe
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  min-height: 100vh;
+
+  .status {
+    margin-top: 2rem;
+    padding: 1.5rem 3rem;
+    font-size: 2.5em;
+    box-shadow: 3px 3px 5px rgba(68, 68, 68, 0.4);
+    background-color: hsl(199, 71%, 80%);
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .newGame {
+    margin-top: 2rem;
+    font-size: 1.5em;
+    padding: 0.6rem;
+    border: 1px solid #222;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(68, 68, 68, 0.4);
+    background-color: hsl(0, 70%, 80%);
+    cursor: pointer;
+
+    &:active {
+      transform: translateX(2px) translateY(2px);
+      box-shadow: none;
+    }
+  }
+
+  .gridContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 15rem;
+    height: 15rem;
+
+    .gridItem {
+      width: 5rem;
+      height: 5rem;
+      border: 1px solid #444;
+      cursor: pointer;
+      flex: 0 1 30%;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 4rem;
+    }
+    
+  }
+}

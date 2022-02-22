@@ -102,7 +102,7 @@ export default function Tictactoe () {
     if (messageCount !== stopMessage.length) {
       let oldStatus = status;
       setStatus(stopMessage[messageCount]);
-      setTimeout( () => {setStatus(oldStatus)}, 800);
+      setTimeout( () => {setStatus(oldStatus)}, 500);
       setMessageCount(messageCount + 1);
     }
   };

@@ -11,6 +11,22 @@ export default function Home () {
           <div className={styles.title}>
             <h1>Content...</h1>
           </div>
+
+          <Link href="./tictactoe"><div className={styles.card}>
+            <div className={styles.cardDescription}>
+              <h2>Tic-Tac-Toe</h2>
+              <p>{"Play with yourself, or make friends with an older man in the park and enjoy this amazing rendition of Tic-Tac-Toe!"}</p>
+            </div>
+            <div className={styles.cardPictureContainer}>
+              <Image
+                src="/home/tictactoeOpt.svg"
+                alt="The Amazing Jumping Knife Jack"
+                width={1282}
+                height={1400}
+              />
+            </div>
+          </div></Link>
+
           <Link href="./cuttingslab"><div className={styles.card}>
             <div className={styles.cardDescription}>
               <h2>The Cutting Slab</h2>
@@ -25,8 +41,8 @@ export default function Home () {
               />
             </div>
           </div></Link>
-        </div>
 
+        </div>
         <div className={styles.right}>
           <div className={styles.profileContainer}>
             <img 

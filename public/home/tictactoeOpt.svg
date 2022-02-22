@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="180" height="200" version="1.1" viewBox="0 0 47.625 52.917" xmlns="http://www.w3.org/2000/svg">
+ <rect width="47.625" height="52.917" fill="#fff"/>
+ <g transform="translate(-17.466 -117.64)">
+  <g transform="matrix(.50243 0 0 .56275 21.01 75.888)" fill="none" stroke="#001ba8" stroke-width=".94032">
+   <path d="m20.085 147.82 16.96 16.96"/>
+   <path d="m37.046 147.82-16.96 16.96"/>
+  </g>
+  <g transform="matrix(.54542 0 0 .64198 34.747 24.906)" fill="none" stroke="#001ba8" stroke-width=".84498">
+   <path d="m20.085 147.82 16.96 16.96"/>
+   <path d="m37.046 147.82-16.96 16.96"/>
+  </g>
+  <g font-family="sans-serif" font-size="12.941px" stroke-width=".32352">
+   <text transform="rotate(24.572)" x="75.122742" y="107.29714" fill="#910606" style="line-height:1.25" xml:space="preserve"><tspan x="75.122742" y="107.29714" fill="#910606" stroke-width=".32352">Tic</tspan></text>
+   <text transform="rotate(24.572)" x="87.091614" y="118.83471" fill="#000000" style="line-height:1.25" xml:space="preserve"><tspan x="87.091614" y="118.83471" stroke-width=".32352">Tac</tspan></text>
+   <text transform="rotate(24.572)" x="101.4327" y="130.04883" fill="#001ba8" style="line-height:1.25" xml:space="preserve"><tspan x="101.4327" y="130.04883" fill="#001ba8" stroke-width=".32352">Toe</tspan></text>
+  </g>
+  <ellipse cx="23.39" cy="148.63" rx="5.2253" ry="5.8488" fill="none" stroke="#910606" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+  <ellipse cx="59.244" cy="144.27" rx="4.0796" ry="5.0149" fill="none" stroke="#910606" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+ </g>
+</svg>

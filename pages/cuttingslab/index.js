@@ -64,38 +64,45 @@ export default function Home() {
 
 
         <div className={styles.breads}>
-          <div className={styles.breadCard}>
-            <p>{"Don't you love bread?"}</p>
+
+          <div className={styles.breadCard} id="1">
             <img
               src="/images/bread1.jpg"
               alt="Bread"
             />
+            <h2>{"Don't you love bread?"}</h2>
           </div>
-          <div className={styles.breadCard}>
-            <p>{"Don't you love it sliced?"}</p>
+
+          <div className={styles.breadCard} id="2">
+            <h2>{"Don't you love it sliced?"}</h2>
             <img
               src="/images/bread2.jpg"
               alt="Bread"
             />
           </div>
-          <div className={styles.breadCard}>
-            <p>{"It just looks so good doesn't it?"}</p>
+
+          <div className={styles.breadCard} id="3">
             <img
               src="/images/bread3.jpg"
               alt="Bread"
             />
+            <h2>{"It just looks so good doesn't it?"}</h2>
           </div>
-          <div className={styles.breadCard}>
-            <p>{"Oh you want that so bad don't you?"}</p>
+
+          <div className={styles.breadCard} id="4">
+            <h2>{"Oh you want that so bad don't you?"}</h2>
             <img
               src="/images/bread4.jpg"
               alt="Bread"
             />
           </div>
+
           <div className={styles.afterBreads}>
-            <p>{"Come on over... We're waiting for you, big [boy or girl]"}</p>
+            <h2>{"Come on over... We're waiting for you, big [boy or girl]"}</h2>
           </div>
+
         </div>
+
         <img
           src="/images/thecuttingslab.png"
           alt="The Cutting Slab"

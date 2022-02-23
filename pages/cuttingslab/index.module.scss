@@ -49,8 +49,6 @@
 
   .jackContainer {
     width: 100%;
-    height: 90vh;
-    max-height: 100vh;
     background-color: #222;
     color: #eee;
     display: flex;
@@ -59,6 +57,7 @@
     justify-content: space-around;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+    padding: 3rem 0;
 
     .jackhead {
       padding: 1rem;
@@ -82,24 +81,43 @@
   }
 
   .breads {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-    font-style: italic;
+    // display: flex;
+    // flex: 1;
+    // flex-direction: column;
+    // justify-content: center;
+    // flex-wrap: wrap;
+    // text-align: center;
+    // font-style: italic;
+    background-color: #D5C0AB;
+    width: 100%;
 
     .breadCard {
-      width: 100%;
+      margin: 1rem auto;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+      max-width: 1400px;
+      align-items: center;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.49761911600577735) 10%, rgba(255,255,255,0.5004202364539565) 90%, rgba(255,255,255,0) 100%);
+      
+      h2 {
+        flex-basis: 55%;
+        text-align: center;  
+      }
+
       img {
+        flex-basis: 45%;
         width: 100%;
         object-fit: cover;
+        border-radius: 16px;
       }
     }
 
-    p {
-      padding: 1rem 0;
+    .afterBreads {
+      text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(180deg, rgba(213,192,171,1) 0%, rgba(255,255,255,1) 100%); 
     }
   }
 
@@ -121,10 +139,16 @@
         box-shadow: none;
       }
     }
+    .breads {
 
-    img {
-      width: 100%;
+      .breadCard {
+        flex-direction: column;
+
+        h2 {
+          order: 1;
+        }
+      }
     }
-
+    
   }  
 }

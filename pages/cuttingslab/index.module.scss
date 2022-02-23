@@ -1,13 +1,15 @@
 // The Cutting Slab
 
-.banner {
+
+.container {
   display: flex;
   flex-direction: column;
-  
+  align-items: center;
+  background-color: #D5C0AB;
+
 
   .bannerElements {
     position: absolute;
-    padding: 1rem 0.5rem 0 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;  
@@ -27,24 +29,21 @@
     }
 
   }
-
-  .storefrontPic {
-    height: 100vh;
+  .storefront{
     width: 100%;
-    object-fit: cover;
+    
+    .storefrontPic {
+      height: 100vh;
+      width: 100%;
+      object-fit: cover;
+    }
   }
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 4rem;
 
   .welcome {
+    width: 100%;
     padding: 4rem 1rem;
     text-align: center;
-    color: #333;
+    background-color: #D5C0AB;
   }
 
   .jackContainer {
@@ -121,9 +120,17 @@
     }
   }
 
-  .cuttingSlabBottom {
-    max-width: 100%;
-    object-fit: contain;
+  .bottomContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+
+    .cuttingSlabBottom {
+      max-width: 1000px;
+      object-fit: contain;
+    }
   }
 }
 

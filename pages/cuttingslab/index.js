@@ -11,8 +11,7 @@ export default function Home() {
         <title>The Cutting Slab</title>
         <meta name="The Cutting Slab" content="We Cut Bread" />
       </Head>
-      
-      <div className={styles.banner}>
+      <div className={styles.container}>
         <div className={styles.bannerElements}>
             <img
               src="/images/thecuttingslabsm.svg"
@@ -30,9 +29,8 @@ export default function Home() {
               className={styles.storefrontPic}
             />
         </div>
-      </div>
       
-      <div className={styles.container}>
+      
         
         <div className={styles.welcome}>
           <h2>
@@ -102,12 +100,13 @@ export default function Home() {
           </div>
 
         </div>
-
-        <img
-          src="/images/thecuttingslab.png"
-          alt="The Cutting Slab"
-          className={styles.cuttingSlabBottom}
-        />
+        <div className={styles.bottomContainer}>
+          <img
+            src="/images/thecuttingslab.png"
+            alt="The Cutting Slab"
+            className={styles.cuttingSlabBottom}
+          />
+        </div>
       </div>
      
       <style jsx global>{`

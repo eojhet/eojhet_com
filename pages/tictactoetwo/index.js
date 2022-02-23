@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import styles from "./index.module.scss";
 
 const winningLines = [
@@ -25,108 +26,77 @@ const stopMessage = [
 
 export default function Tictactoe () {
   const [xTurn, setXTurn] = useState(true);
-  // const [gameOn, setGameOn] = useState(true);
-  const [status, setStatus] = useState('You Go First');
+  const [gameOn, setGameOn] = useState(true);
+  const [status, setStatus] = useState('X Goes First');
   const [turnNum, setTurnNum] = useState(0);
   const [messageCount, setMessageCount] = useState(0);
-  let gameOn = true;
 
   const handleAction = (e) => {
-    if (xTurn && e.target.innerHTML === "") {
-      e.target.innerHTML = "X";
-      setXTurn(false);
-      setStatus("Thinking...");
+    if (gameOn && e.target.innerHTML === "") {
+      xTurn ? e.target.innerHTML = "X" : e.target.innerHTML = "O";
+      setXTurn(!xTurn);
+      !xTurn ? setStatus("X Goes Next") : setStatus("O Goes Next");
       setTurnNum(turnNum + 1);
-      // if (turnNum > 8) {
-      //   setGameOn(false);
-      //   setStatus("CAT'S GAME, YOU LOSE");
-      // }
-
+      if (turnNum === 8) {
+        setGameOn(false);
+        setStatus("CAT'S GAME, YOU LOSE");
+      }
       handleScore();
-      setTimeout( () => {compTurn()}, 300);    
     }
   }
 
   const handleScore = () => {
-    if (gameOn) {
-      let result = [];
-      let x = [];
-      let o = [];
+    let result = [];
+    let x = [];
+    let o = [];
 
-      for (let i = 0; i < 9; i++) {
-        result.push(document.getElementById(i).innerHTML);
-      }
-
-      result.forEach((element, index) => {
-        if(element === 'X') x.push(index)
-      })
-
-      for (let i = 0; i < winningLines.length; i++) {
-        if (
-          x.includes(winningLines[i][0]) 
-          && x.includes(winningLines[i][1])
-          && x.includes(winningLines[i][2])
-          ){
-            gameOn = false;
-            setXTurn(false);
-            setStatus('You Win!');
-            break;
-          }
-      }
-      
-      result.forEach((element, index) => {
-        if(element === 'O') o.push(index)
-      })
-
-      for (let i = 0; i < winningLines.length; i++) {
-        if (
-          o.includes(winningLines[i][0]) 
-          && o.includes(winningLines[i][1])
-          && o.includes(winningLines[i][2])
-          ){
-            gameOn = false;
-            setXTurn(false);
-            setStatus('You Lose!');
-            break;
-          }
-      }
+    for (let i = 0; i < 9; i++) {
+      result.push(document.getElementById(i).innerHTML);
     }
-  }
 
-  const compTurn = () => {
-    if (gameOn) {
+    result.forEach((element, index) => {
+      if(element === 'X') x.push(index)
+    })
 
-      let result = [];
-      let emptySquares = [];
+    for (let i = 0; i < winningLines.length; i++) {
+      if (
+        x.includes(winningLines[i][0]) 
+        && x.includes(winningLines[i][1])
+        && x.includes(winningLines[i][2])
+        ){
+          console.log(i);
+          setGameOn(false);
+          setStatus('X is Winner!');
+          break;
+        }
+    }
+    
+    result.forEach((element, index) => {
+      if(element === 'O') o.push(index)
+    })
 
-      for (let i = 0; i < 9; i++) {
-        result.push(document.getElementById(i).innerHTML);
-      }
-
-      result.forEach((element, index) => {
-        if(element === '') emptySquares.push(index)
-      })
-      if (emptySquares.length !== 0) {
-        const randMove = Math.floor(Math.random() * emptySquares.length);
-
-        document.getElementById(emptySquares[randMove]).innerHTML = "O";
-        setXTurn(true);
-        setStatus("Your Turn");
-        handleScore();
-      } else {
-        setStatus("Cat's Game");
-      }
-    } 
+    for (let i = 0; i < winningLines.length; i++) {
+      if (
+        o.includes(winningLines[i][0]) 
+        && o.includes(winningLines[i][1])
+        && o.includes(winningLines[i][2])
+        ){
+          console.log(i);
+          setGameOn(false);
+          setStatus('O is Winner!');
+          break;
+        }
+    }
   }
 
   const handleNewGame = () => {
     for (let i = 0; i < 9; i++) {
       document.getElementById(i).innerHTML = '';
     }
-    gameOn = true;
+    setGameOn(true);
     setXTurn(true);
     setTurnNum(0);
-    setStatus("You Go First")
+    setStatus("X Goes First")
   }
 
   const handleStatusClick = (e) => {
@@ -153,6 +123,10 @@ export default function Tictactoe () {
         <div id="8" onClick={handleAction} className={styles.gridItem}/>
       </div>
       <button onClick={handleNewGame} className={styles.newGame}>NEW GAME</button>
+      <div className={styles.otherMode}>
+        <p>You are currently in Two Player Mode.</p>
+        <p><Link href="/tictactoe">Click HERE for Single Player Mode!</Link></p>
+      </div>
     </div>
   )
 }

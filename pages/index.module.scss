@@ -64,7 +64,8 @@
     }
 
     .card {
-      min-height: 200px;
+      height: 200px;
+      overflow: hidden;
       display: flex;
       flex-direction: row;
       cursor: pointer;
@@ -77,33 +78,37 @@
         .cardDescription {
           background-color: hsl(202, 100%, 97%);
         }
-
       }
 
       .cardDescription {
-        flex-basis: 70%;
-        padding: 0.5rem;
+        width: 70%;
+        padding: 0.8rem;
         background-color: #fff;
       }
 
       .cardPictureContainer {
-        flex-basis: 30%;
+        width: 30%;
         align-self: center;
-        display: block;
+        max-height: 200px;
+        
+        img {
+          max-width: 100%;
+          object-fit: cover;
+        }
       }
 
     }
 
-    .sun {
-      width: 50rem;
-      position: absolute;
-      top: 0;
-      right: 4rem;
-    }
+    // .sun {
+    //   width: 50rem;
+    //   position: absolute;
+    //   top: 0;
+    //   right: 4rem;
+    // }
 
-    .triangle {
-      width: 15rem;
-    }
+    // .triangle {
+    //   width: 15rem;
+    // }
   }
 
   @media screen and (max-width: 900px) {
@@ -121,6 +126,26 @@
         max-width: 100%;
         padding: 0 0.2rem;
         margin-bottom: 3rem;
+      }
+
+      .card {
+        flex-direction: column-reverse;
+        height: fit-content;
+
+        .cardDescription {
+          width: 100%;
+        }
+
+        .cardPictureContainer {
+          width: 100%;
+          overflow: hidden;
+          max-height: 60vh;
+
+          img {
+            width: 100%;
+            max-width: none;
+          }
+        }
       }
 
     }

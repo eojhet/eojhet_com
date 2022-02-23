@@ -18,11 +18,9 @@ export default function Home () {
               <p>{"Play with yourself or make friends with an older man in the park and enjoy this amazing rendition of Tic-Tac-Toe!"}</p>
             </div>
             <div className={styles.cardPictureContainer}>
-              <Image
+              <img
                 src="/home/tictactoeOpt.svg"
-                alt="The Amazing Jumping Knife Jack"
-                width={1282}
-                height={1400}
+                alt="TicTacToe"
               />
             </div>
           </div></Link>
@@ -33,11 +31,9 @@ export default function Home () {
               <p>{"Come have a taste of your favorite bread at the home The Cutting Slab. We will cut your bread to perfection!"}</p>
             </div>
             <div className={styles.cardPictureContainer}>
-              <Image
+              <img
                 src="/images/jumpingknifejack.jpg"
                 alt="The Amazing Jumping Knife Jack"
-                width={1282}
-                height={1400}
               />
             </div>
           </div></Link>

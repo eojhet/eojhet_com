@@ -15,18 +15,6 @@
     
     a {
       color: hsl(202, 100%, 34%);
-      display: inline-block;
-      transition: all 200ms ease-out;
-
-      &:hover,
-      &:active,
-      &:focus {
-        font-size: xx-large;
-        padding: 0.5rem 0.2rem;
-        transition: all 200ms ease-out;
-
-      }
-
     }
     
     .right {

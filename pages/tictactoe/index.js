@@ -26,9 +26,7 @@ const stopMessage = [
 
 export default function Tictactoe () {
   const [xTurn, setXTurn] = useState(true);
-  // const [gameOn, setGameOn] = useState(true);
   const [status, setStatus] = useState('You Go First');
-  const [turnNum, setTurnNum] = useState(0);
   const [messageCount, setMessageCount] = useState(0);
   let gameOn = true;
 
@@ -37,11 +35,6 @@ export default function Tictactoe () {
       e.target.innerHTML = "X";
       setXTurn(false);
       setStatus("Thinking...");
-      setTurnNum(turnNum + 1);
-      // if (turnNum > 8) {
-      //   setGameOn(false);
-      //   setStatus("CAT'S GAME, YOU LOSE");
-      // }
 
       handleScore();
       setTimeout( () => {compTurn()}, 300);    
@@ -50,16 +43,17 @@ export default function Tictactoe () {
 
   const handleScore = () => {
     if (gameOn) {
-      let result = [];
+      let boardState = [];
       let x = [];
       let o = [];
 
       for (let i = 0; i < 9; i++) {
-        result.push(document.getElementById(i).innerHTML);
+        boardState.push(document.getElementById(i).innerHTML);
       }
 
-      result.forEach((element, index) => {
-        if(element === 'X') x.push(index)
+      boardState.forEach((element, index) => {
+        if(element === 'X') x.push(index);
+        if(element === 'O') o.push(index);
       })
 
       for (let i = 0; i < winningLines.length; i++) {
@@ -74,10 +68,6 @@ export default function Tictactoe () {
             break;
           }
       }
-      
-      result.forEach((element, index) => {
-        if(element === 'O') o.push(index)
-      })
 
       for (let i = 0; i < winningLines.length; i++) {
         if (
@@ -97,20 +87,98 @@ export default function Tictactoe () {
   const compTurn = () => {
     if (gameOn) {
 
-      let result = [];
+      let boardState = [];
       let emptySquares = [];
+      let x = [];
+      let o = [];
+      let nextMove = undefined;
 
+      // Populate array with current state of board 
       for (let i = 0; i < 9; i++) {
-        result.push(document.getElementById(i).innerHTML);
+        boardState.push(document.getElementById(i).innerHTML);
       }
 
-      result.forEach((element, index) => {
+      // Create array of empty squares
+      boardState.forEach((element, index) => {
         if(element === '') emptySquares.push(index)
       })
-      if (emptySquares.length !== 0) {
-        const randMove = Math.floor(Math.random() * emptySquares.length);
 
-        document.getElementById(emptySquares[randMove]).innerHTML = "O";
+      boardState.forEach((element, index) => {
+        if(element === 'X') x.push(index);
+        if(element === 'O') o.push(index);
+      })
+
+      // Randomly place piece on board and end turn
+      if (emptySquares.length !== 0) {
+
+        // Check if comp can win this turn
+        for (let i = 0; i < winningLines.length; i++) {
+          let count = 0;
+
+          for (let j = 0; j < 3; j++) {
+            if (o.includes(winningLines[i][j])){
+              count++;
+              }
+            if (x.includes(winningLines[i][j])){
+              count --;
+            }
+          }
+
+          if (count === 2) {
+            for (let j = 0; j < 3; j++) {
+              if (emptySquares.includes(winningLines[i][j])){
+                nextMove = winningLines[i][j]
+                break;
+              }
+            }
+          }
+          if (nextMove !== undefined) {break};
+          count = 0;
+        }
+
+        // Check if player can win next turn
+        if (nextMove === undefined) {
+          for (let i = 0; i < winningLines.length; i++) {
+            let count = 0;
+  
+            for (let j = 0; j < 3; j++) {
+              if (x.includes(winningLines[i][j])){
+                count++;
+                }
+              if (o.includes(winningLines[i][j])){
+                count --;
+              }
+            }
+  
+            if (count === 2) {
+              for (let j = 0; j < 3; j++) {
+                if (emptySquares.includes(winningLines[i][j])){
+                  nextMove = winningLines[i][j]
+                  break;
+                }
+              }
+            }
+            
+            if (nextMove !== undefined) {break};
+            count = 0;
+          }          
+
+        }
+
+        // console.log('emptySquares = ' + emptySquares);
+        // console.log('boardState = ' + boardState);
+        // console.log('X = ' + x);
+        // console.log('O = ' + o);
+
+        // If comp can win this turn, win, else if player can win next turn, block, else place randomly
+        if (nextMove === undefined) {
+          const randMove = Math.floor(Math.random() * emptySquares.length);
+          document.getElementById(emptySquares[randMove]).innerHTML = "O";
+        } else {
+          document.getElementById(nextMove).innerHTML = "O";
+        }
+
+        //end turn
         setXTurn(true);
         setStatus("Your Turn");
         handleScore();
@@ -126,7 +194,6 @@ export default function Tictactoe () {
     }
     gameOn = true;
     setXTurn(true);
-    setTurnNum(0);
     setStatus("You Go First")
   }
 

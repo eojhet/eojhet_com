@@ -1,12 +1,30 @@
 import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 
-export default function TODO () {
+const initialNotes = (key) => {
+  if (typeof window !== "undefined") {
+    let saved = localStorage.getItem(key);
+    const initial = JSON.parse(saved);
+    return initial || [];
+  }
+}
+
+const storeNotes = (key, notesList) => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(key, JSON.stringify(notesList));
+  }
+}
+
+export default function Notes () {
 
   const [newNote, setNewNote] = useState("");
   const [newBody, setNewBody] = useState("");
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(initialNotes('notesList'));
   const [test, setTest] = useState(false);
+
+  useEffect(() => {
+    storeNotes('notesList', notes);
+  },[test]);
 
   const newNoteHandler = (e) => {
     e.preventDefault();
@@ -19,6 +37,7 @@ export default function TODO () {
     setNotes(tempNotes)
     setNewNote("");
     setNewBody("");
+    setTest(!test);
   }
 
   const newNoteChange = (e) => {
@@ -31,7 +50,9 @@ export default function TODO () {
 
   const handleRemove = (e) =>{
     var tempNotes = notes;
+
     tempNotes.splice(e.target.value, 1);
+    
     setNotes(tempNotes);
     setTest(!test);
   }
@@ -50,8 +71,10 @@ export default function TODO () {
   const handleDown = (e) => {
     var tempNotes = [...notes];
     var index = +e.target.value;
+    
     tempNotes.splice(index, 1);
     tempNotes.splice(index + 1, 0, notes[index]);
+
     setNotes(tempNotes);
     setTest(!test);
   }
@@ -127,7 +150,7 @@ export default function TODO () {
       </div>
 
       <div className={styles.notesContainer}>
-        <NotesList notes={notes} />
+        {notes ? <NotesList notes={notes} /> : null}
       </div>
     </div>
   )

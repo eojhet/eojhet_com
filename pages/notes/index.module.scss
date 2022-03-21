@@ -127,7 +127,6 @@
         .close {
           border: none;
           background-color: inherit;
-          font-size: 1em;
           cursor: pointer;
 
           .closeLeft{
@@ -143,7 +142,7 @@
             width: 20px;
             height: 1px;
             background-color: #333;
-            transform: translateY(-19px) rotate(-45deg);
+            transform: translateY(-16px) rotate(-45deg);
           }
         }
       }

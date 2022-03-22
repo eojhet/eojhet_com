@@ -111,6 +111,7 @@ export default function Notes () {
           <span className={styles.closeLeft}/>
           <span className={styles.closeRight}/>
         </button>
+        <button className={styles.edit} type='edit' value={props.index}>EDIT</button>
       </div>
 
     </li>

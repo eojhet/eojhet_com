@@ -223,7 +223,7 @@ export default function Tictactoe () {
       <button onClick={handleNewGame} className={styles.newGame}>NEW GAME</button>
       <div className={styles.otherMode}>
         <p>You are currently in Single Player Mode.</p>
-        <p><Link href="/tictactoetwo">Click HERE for Two Player Mode!</Link></p>
+        <p className={styles.link}><Link href="/tictactoetwo">Click HERE for Two Player Mode!</Link></p>
       </div>
     </div>
   )

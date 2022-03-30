@@ -6,4 +6,9 @@
   align-items: center;
   min-height: 100vh;
   
+  .content {
+    padding: 0 1rem;
+    word-wrap: break-word;
+    width: 100%;
+  }
 }

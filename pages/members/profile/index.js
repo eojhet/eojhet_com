@@ -8,7 +8,9 @@ export default function Profile () {
   return (
     <div className={styles.container}>
       <h1>Welcome</h1>
-      {token ? token : null}
+      <div className={styles.content}>
+        {token ? token : null}
+      </div>
     </div>
   )
 }

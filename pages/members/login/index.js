@@ -1,6 +1,6 @@
 // members/login
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styles from './index.module.scss';
 import SaveToken from '../../../components/saveToken';
@@ -15,6 +15,8 @@ export default function Login () {
   const [warning, setWarning] = useState('');
   const [ready, setReady] = useState(false);
   const router = useRouter();
+  const userInput = useRef();
+  const passInput = useRef();
 
   useEffect( () => {
     if (username.length > 4 && username.length < 25
@@ -58,6 +60,9 @@ export default function Login () {
       })
     } else {
       setWarning('Enter valid credentials.')
+      userInput.current.focus();
+      passInput.current.focus();
+      e.target.focus();
     }
   }
 
@@ -94,6 +99,7 @@ export default function Login () {
             onChange={handleUsername} 
             autoComplete="username" 
             onBlur={checkUsername}
+            ref={userInput}
           />
           <div className={styles.warning}>{userWarn}&nbsp;</div>
           <label>Password:&nbsp;</label>
@@ -105,6 +111,7 @@ export default function Login () {
             onChange={handlePassword} 
             autoComplete="password"
             onBlur={checkPassword} 
+            ref={passInput}
           />
           <div className={styles.warning}>{passWarn}&nbsp;</div>
           <button type="submit" onClick={handleSubmit}>Login</button>

@@ -1,9 +1,8 @@
 // members/login
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styles from './index.module.scss';
-import SaveToken from '../../../components/saveToken';
 import { useRouter } from 'next/router';
 
 export default function Register () {
@@ -19,14 +18,25 @@ export default function Register () {
   const [warning, setWarning] = useState('');
   const [ready, setReady] = useState(false);
   const router = useRouter();
+  const emailReg = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+  const emailInput = useRef();
+  const userInput = useRef();
+  const passInput = useRef();
+  const passConfInput = useRef();
+
 
   useEffect( () => {
-    if (username.length > 4 && username.length < 25
-        && password.length > 4 && password.length < 50){
+    if (emailReg.test(email)
+        && username.length > 4 && username.length < 25
+        && password.length > 4 && password.length < 50
+        && passConf.length > 0 && passConf === password
+        ){
           setReady(true);
           setWarning('');
+        } else {
+          setReady(false);
         }
-  }, [username, password]);
+  }, [email, username, password, passConf]);
 
   const handleUsername = (e) => {
     setUsername(e.target.value)
@@ -56,7 +66,7 @@ export default function Register () {
 
   const checkPassword = (e) => {
     if (password.length < 7 || password.length > 32){
-      setPassWarn("Password should be 8 - 32.");
+      setPassWarn("Password should be 8 - 32 characters.");
       e.target.style.borderColor = 'red';
     } else {
       setPassWarn("");
@@ -75,8 +85,7 @@ export default function Register () {
   }
 
   const checkEmail = (e) => {
-    const regName = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
-    if (!regName.test(email)) {
+    if (!emailReg.test(email)) {
       setEmailWarn("Enter valid email.");
       e.target.style.borderColor = 'red';
     } else {
@@ -88,7 +97,7 @@ export default function Register () {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (ready) {
+    if (ready) {
     //   e.target.disabled = true;
 
     //   axios.post('/api/login', {
@@ -109,9 +118,14 @@ export default function Register () {
     //     }
     //     e.target.disabled = false;
     //   })
-    // } else {
-    //   setWarning('Enter valid credentials.')
-    // }
+    } else {
+      setWarning('Enter valid credentials.')
+      emailInput.current.focus();
+      userInput.current.focus();
+      passInput.current.focus();
+      passConfInput.current.focus();
+      e.target.focus();
+    }
   }
 
   return (
@@ -127,6 +141,7 @@ export default function Register () {
             onChange={handleEmail}
             autoComplete="email"
             onBlur={checkEmail}
+            ref={emailInput}
           />
           <div className={styles.warning}>{emailWarn}&nbsp;</div>
           <label>Username:&nbsp;</label>
@@ -137,6 +152,7 @@ export default function Register () {
             onChange={handleUsername} 
             autoComplete="username" 
             onBlur={checkUsername}
+            ref={userInput}
           />
           <div className={styles.warning}>{userWarn}&nbsp;</div>
           <label>Password:&nbsp;</label>
@@ -148,6 +164,7 @@ export default function Register () {
             onChange={handlePassword} 
             autoComplete="new-password"
             onBlur={checkPassword} 
+            ref={passInput}
           />
           <div className={styles.warning}>{passWarn}&nbsp;</div>
           <label>Confirm Password:&nbsp;</label>
@@ -159,6 +176,7 @@ export default function Register () {
             onChange={handlePassConf} 
             autoComplete="new-password"
             onBlur={checkPassConf} 
+            ref={passConfInput}
           />
           <div className={styles.warning}>{passConfWarn}&nbsp;</div>
           <button type="submit" onClick={handleSubmit}>Register</button>

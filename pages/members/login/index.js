@@ -72,7 +72,7 @@ export default function Login () {
   }
 
   const checkPassword = (e) => {
-    if (password.length < 5 || password.length > 50){
+    if (password.length < 7 || password.length > 32){
       setPassWarn("Enter valid password.");
       e.target.style.borderColor= 'red';
     } else {

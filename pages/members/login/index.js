@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './index.module.scss';
+import SaveToken from '../../../components/saveToken';
+import { useRouter } from 'next/router';
 
 export default function Login () {
   
@@ -10,12 +12,15 @@ export default function Login () {
   const [userWarn, setUserWarn] = useState('');
   const [password, setPassword] = useState('');
   const [passWarn, setPassWarn] = useState('');
+  const [warning, setWarning] = useState('');
   const [ready, setReady] = useState(false);
+  const router = useRouter();
 
   useEffect( () => {
     if (username.length > 4 && username.length < 25
         && password.length > 4 && password.length < 50){
           setReady(true);
+          setWarning('');
         }
   }, [username, password]);
 
@@ -38,13 +43,21 @@ export default function Login () {
         password: password
       })
       .then(function(res) {
-        console.log(res.data.token)
-        e.target.disabled = false;
+        if (res.data.token) {
+          SaveToken(res.data.token);
+          router.push('/members/profile');
+        }
       })
       .catch(function (err) {
-        console.log(err.response.data.message);
+        if (err.response.status === 401) {
+          setWarning('Invalid credentials.')
+        } else {
+          setWarning('Something went wrong...')
+        }
         e.target.disabled = false;
       })
+    } else {
+      setWarning('Enter valid credentials.')
     }
   }
 
@@ -82,7 +95,7 @@ export default function Login () {
             autoComplete="username" 
             onBlur={checkUsername}
           />
-          <div className={styles.userWarn}>{userWarn}&nbsp;</div>
+          <div className={styles.warning}>{userWarn}&nbsp;</div>
           <label>Password:&nbsp;</label>
           <br />
           <input 
@@ -93,44 +106,11 @@ export default function Login () {
             autoComplete="password"
             onBlur={checkPassword} 
           />
-          <div className={styles.passWarn}>{passWarn}&nbsp;</div>
+          <div className={styles.warning}>{passWarn}&nbsp;</div>
           <button type="submit" onClick={handleSubmit}>Login</button>
+          <div className={styles.warning}>{warning}&nbsp;</div>
         </form>
       </div>
     </div>
-  )
-
-  
+  )  
 }
-
-// <Formik
-//         validationSchema={SignupSchema}
-//       >
-//         {({ errors, touched }) => {
-//           return (<Form>
-//             <Field 
-//               name="username" 
-//               value={username} 
-//               onChange={handleUsername} 
-//             />
-//             {errors.username && touched.username ? (
-//               <div>{errors.username}</div>
-//             ) : <div>&nbsp;</div>}
-
-//             <br />
-
-//             <Field 
-//               name="password" 
-//               value={password}
-//               onChange={handlePassword}
-//             />
-//             {errors.password && touched.password ? (
-//               <div>{errors.password}</div>
-//             ) : <div>&nbsp;</div>}
-            
-//             <br />
-
-//             <button type="submit" onSubmit={handleSubmit}>Submit</button>
-//           </Form>)
-//         }}
-//       </Formik>

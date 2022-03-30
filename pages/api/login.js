@@ -13,7 +13,8 @@ export default function handler(request, response) {
       response.status(200).send(res.data);
     })
     .catch(function (err) {
-      response.status(err.response.status).send(err.response.data);
+      console.log(err.response.data.message);
+      response.status(err.response.status).send(JSON.stringify(err.response.data.message));
     });
 
   } else {

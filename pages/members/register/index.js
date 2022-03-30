@@ -24,7 +24,6 @@ export default function Register () {
   const passInput = useRef();
   const passConfInput = useRef();
 
-
   useEffect( () => {
     if (emailReg.test(email)
         && username.length > 4 && username.length < 25
@@ -98,26 +97,27 @@ export default function Register () {
     e.preventDefault();
 
     if (ready) {
-    //   e.target.disabled = true;
+      e.target.disabled = true;
 
-    //   axios.post('/api/login', {
-    //     username: username,
-    //     password: password
-    //   })
-    //   .then(function(res) {
-    //     if (res.data.token) {
-    //       SaveToken(res.data.token);
-    //       router.push('/members/profile');
-    //     }
-    //   })
-    //   .catch(function (err) {
-    //     if (err.response.status === 401) {
-    //       setWarning('Invalid credentials.')
-    //     } else {
-    //       setWarning('Something went wrong...')
-    //     }
-    //     e.target.disabled = false;
-    //   })
+      axios.post('/api/register', {
+        username: username,
+        email: email,
+        password: password
+      })
+      .then(function(res) {
+        console.log(res);
+        if (res.status === 200) {
+          router.push(`/members/login?msg=Reg200`);
+        }
+      })
+      .catch(function (err) {
+        if (err?.response?.status === 400) {
+          setWarning('Username is taken.')
+        } else {
+          setWarning('Something went wrong...')
+        }
+        e.target.disabled = false;
+      })
     } else {
       setWarning('Enter valid credentials.')
       emailInput.current.focus();

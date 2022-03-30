@@ -3,10 +3,12 @@ import axios from "axios";
 export default function handler(request, response) {
   if (request.method === 'POST') {
     let username = request.body.username;
+    let email = request.body.email;
     let password = request.body.password;
 
-    axios.post('http://localhost:8080/api/user/login', {
+    axios.post('http://localhost:8080/api/user/register', {
       username: username,
+      email: email,
       password: password
     })
     .then(function (res) {
@@ -14,7 +16,7 @@ export default function handler(request, response) {
     })
     .catch(function (err) {
       console.log(err);
-      response.status(err.response.status).send({ message: 'Invalid Credentials'});
+      response.status(err.response.status).send({ message: "Invalid Credentials" });
     });
 
   } else {

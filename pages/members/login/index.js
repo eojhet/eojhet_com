@@ -7,7 +7,8 @@ import SaveToken from '../../../components/saveToken';
 import { useRouter } from 'next/router';
 
 export default function Login () {
-  
+  const { query } = useRouter();
+  const [banner, setBanner] = useState('Login');
   const [username, setUsername] = useState('');
   const [userWarn, setUserWarn] = useState('');
   const [password, setPassword] = useState('');
@@ -17,6 +18,12 @@ export default function Login () {
   const router = useRouter();
   const userInput = useRef();
   const passInput = useRef();
+  
+  useEffect( () => {
+    if (query?.msg === 'Reg200') {
+      setBanner('Registration Successful')
+    }
+  })
 
   useEffect( () => {
     if (username.length > 4 && username.length < 25
@@ -88,7 +95,7 @@ export default function Login () {
 
   return (
     <div className={styles.container}>
-      <h1>Login</h1>
+      <h1>{banner}</h1>
       <div className={styles.formContainer}>
         <form>
           <label>Username:&nbsp;</label>

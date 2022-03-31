@@ -25,9 +25,11 @@ export default function Register () {
   const passConfInput = useRef();
 
   useEffect( () => {
+    //username should be 3 - 25 chars
+    //password should be 6 - 32 chars
     if (emailReg.test(email)
-        && username.length > 4 && username.length < 25
-        && password.length > 4 && password.length < 50
+        && username.length > 2 && username.length < 26
+        && password.length > 5 && password.length < 33
         && passConf.length > 0 && passConf === password
         ){
           setReady(true);
@@ -55,7 +57,7 @@ export default function Register () {
 
   const checkUsername = (e) => {
     if (username.length < 5 || username.length > 25){
-      setUserWarn("Enter valid username.");
+      setUserWarn("Username should be 3 - 25 characters.");
       e.target.style.borderColor = 'red';
     } else {
       setUserWarn("");
@@ -65,7 +67,7 @@ export default function Register () {
 
   const checkPassword = (e) => {
     if (password.length < 7 || password.length > 32){
-      setPassWarn("Password should be 8 - 32 characters.");
+      setPassWarn("Password should be 6 - 32 characters.");
       e.target.style.borderColor = 'red';
     } else {
       setPassWarn("");
@@ -130,7 +132,7 @@ export default function Register () {
 
   return (
     <div className={styles.container}>
-      <h1>Register</h1>
+        <h1>Register</h1>
       <div className={styles.formContainer}>
         <form>
           <label>Email:&nbsp;</label>

@@ -1,21 +1,22 @@
 import axios from "axios";
 
-export default function handler(request, response) {
+export default async function handler(request, response) {
   if (request.method === 'POST') {
     let username = request.body.username;
     let password = request.body.password;
 
-    axios.post('http://localhost:8080/api/user/login', {
+    const data = await axios.post('http://localhost:8080/api/user/login', {
       username: username,
       password: password
     })
     .then(function (res) {
-      response.status(200).send(res.data);
+      return res.data;
     })
     .catch(function (err) {
-      console.log(err);
       response.status(err.response.status).send({ message: 'Invalid Credentials'});
     });
+
+    response.status(200).send(data);
 
   } else {
     response.status(404).json({ message: 'Unavailable' });

@@ -41,6 +41,26 @@ export default function Login () {
     setPassword(e.target.value)
   }
 
+  const checkUsername = (e) => {
+    if (username.length < 5 || username.length > 25){
+      setUserWarn("Enter valid username.");
+      e.target.style.borderColor= 'red';
+    } else {
+      setUserWarn("");
+      e.target.style.borderColor= 'hsl(199, 71%, 70%)';
+    }
+  }
+
+  const checkPassword = (e) => {
+    if (password.length < 7 || password.length > 32){
+      setPassWarn("Enter valid password.");
+      e.target.style.borderColor= 'red';
+    } else {
+      setPassWarn("");
+      e.target.style.borderColor= 'hsl(199, 71%, 70%)';
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -70,26 +90,6 @@ export default function Login () {
       userInput.current.focus();
       passInput.current.focus();
       e.target.focus();
-    }
-  }
-
-  const checkUsername = (e) => {
-    if (username.length < 5 || username.length > 25){
-      setUserWarn("Enter valid username.");
-      e.target.style.borderColor= 'red';
-    } else {
-      setUserWarn("");
-      e.target.style.borderColor= 'hsl(199, 71%, 70%)';
-    }
-  }
-
-  const checkPassword = (e) => {
-    if (password.length < 7 || password.length > 32){
-      setPassWarn("Enter valid password.");
-      e.target.style.borderColor= 'red';
-    } else {
-      setPassWarn("");
-      e.target.style.borderColor= 'hsl(199, 71%, 70%)';
     }
   }
 

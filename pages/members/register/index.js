@@ -107,7 +107,6 @@ export default function Register () {
         password: password
       })
       .then(function(res) {
-        console.log(res);
         if (res.status === 200) {
           router.push(`/members/login?msg=Reg200`);
         }

@@ -3,22 +3,27 @@
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { selectProfile } from "../../../components/redux/profileSlice";
+
 import GetProfile from "../../../components/getProfile";
 import styles from "./index.module.scss";
 
 export default function Profile () {
   const [profile, setProfile] = useState({});
-  const [firstName, setFirstName] = useState(profile.firstName)
   const [editMode, setEditMode] = useState(false);
   
-  useEffect(() => {
-    getProfile();
-  }, [])
+  // useEffect(() => {
+  //   getProfile();
+  // }, [])
 
-  async function getProfile () {
-    let profileData = await GetProfile()
-    setProfile(profileData);
-  }
+  // async function getProfile () {
+  //   let profileData = await GetProfile()
+  //   console.log(profileData);
+  //   setProfile(profileData);
+  // }
+
+  const displayName = useSelector(selectProfile);
   
   function ProfileSection () {
     return (
@@ -41,6 +46,7 @@ export default function Profile () {
     return (
       <div>
         <h3>Please <Link href="/members/login">Log In</Link> to continue</h3>
+        <h3>{displayName}</h3>
       </div>
     )
   }

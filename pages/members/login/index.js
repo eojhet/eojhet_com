@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styles from './index.module.scss';
-import SaveToken from '../../../components/saveToken';
+import { SaveToken } from '../../../components/tokenManagement';
 import { useRouter } from 'next/router';
 
 export default function Login () {

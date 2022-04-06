@@ -3,21 +3,37 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { selectProfile, GetProfile } from "../../../components/redux/profileSlice";
+import { RetrieveProfile, SaveProfile } from "../../../components/profileManagement";
+import { selectProfile, getProfile } from "../../../components/redux/profileSlice";
 import styles from "./index.module.scss";
 
 export default function Profile () {
-  const [editMode, setEditMode] = useState(false);
 
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch(GetProfile());
+    SaveProfile();
+    dispatch(getProfile(RetrieveProfile()));
   },[])
 
   const reduxProfile = useSelector(selectProfile);
-  
-  function ProfileSection () {
+
+  // function NoProfile () {
+  //   return (
+  //     <div>
+  //       <h3>Please <Link href="/members/login">Log In</Link> to continue</h3>
+  //     </div>
+  //   )
+  // }
+
+  if (!reduxProfile._id){
+    return (
+      <div>
+        <h3>Please <Link href="/members/login">Log In</Link> to continue</h3>
+      </div>
+    )
+  } else {
+
     return (
       <div className={styles.container}>
         <div className={styles.heading}>
@@ -28,23 +44,9 @@ export default function Profile () {
           <p>First Name: {reduxProfile.firstName}</p>
           <p>Last Name: {reduxProfile.lastName}</p>
           <p>Bio: {reduxProfile.bio}</p>
-          <button type='edit' onClick={() => setEditMode(!editMode)}>edit</button>
+          <p><Link href="/members/profile/edit">Edit profile</Link></p>
         </div> 
       </div>
     )
   }
-
-  function NoProfile () {
-    return (
-      <div>
-        <h3>Please <Link href="/members/login">Log In</Link> to continue</h3>
-      </div>
-    )
-  }
-
-  return (
-    <div className={styles.page}>
-      {reduxProfile._id ? <ProfileSection /> : <NoProfile />}
-    </div>
-  )
 }

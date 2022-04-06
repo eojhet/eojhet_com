@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import GetToken from "../getToken";
+import { GetToken } from "../tokenManagement";
 
 const initialState = {
   _id: undefined,
@@ -30,23 +30,23 @@ export const profileSlice = createSlice({
 
 export const { getProfile } = profileSlice.actions;
 
-export const GetProfile = () => async (dispatch) => {
-  let token = 'Bearer ' + GetToken();
-  let data = await axios({
-    method: 'get',
-    url: '/api/profile',
-    headers: {Authorization: token},
-  })
-  .then(function (res) {
-    return res.data
-  })
-  .catch(function (err) {
-    console.log('token ', token, 'err', err);
-    return
-  })
+// export const GetProfile = () => async (dispatch) => {
+//   let token = 'Bearer ' + GetToken();
+//   let data = await axios({
+//     method: 'get',
+//     url: '/api/profile',
+//     headers: {Authorization: token},
+//   })
+//   .then(function (res) {
+//     return res.data
+//   })
+//   .catch(function (err) {
+//     console.log('token ', token, 'err', err);
+//     return
+//   })
 
-  dispatch(getProfile(data));
-}
+//   dispatch(getProfile(data));
+// }
 
 export const selectProfile = (state) => state.profile;
 

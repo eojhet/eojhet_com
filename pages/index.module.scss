@@ -1,72 +1,46 @@
-.main {
+
+
+.container {
   font-family: Rubik, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
-  .container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  overflow: hidden;
+  justify-content: space-around;
+  max-width: 1400px;
+  margin: 1rem auto;
+  min-height: 100vh;
+  gap: 1rem;
+  
+  .center {
     display: flex;
-    flex: 1;
-    flex-direction: row;
-    overflow: hidden;
-    justify-content: space-around;
-    max-width: 1400px;
-    margin: 1rem auto;
-    min-height: 100vh;
-    gap: 1rem;
-    
-    a {
-      color: hsl(202, 100%, 34%);
-    }
-    
-    .right {
-      display: flex;
-      flex-direction: column;
-      max-width: 25%;         
-
-      .profileContainer {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .profile {
-        border-radius: 100%;
-        align-self: center;
-        box-shadow: 0 0 20px 5px rgba(68, 68, 68, 0.3);
-        margin: 2.5rem 0 0.5rem 0;
-        align-self: center;
-      }
-      
-    }
-    
-    .center {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      max-width: 800px;
-      padding: 0 3rem;
-      margin-top: 2rem;
-
-    }
-    
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    padding: 0 1rem;
+    margin-top: 2rem;
+  
     .title {
       color: #444;
+
+      h1 {
+        font-size: 1.8em;
+      }
     }
 
     .card {
-      height: 200px;
+      height: 180px;
       overflow: hidden;
       display: flex;
       flex-direction: row;
       cursor: pointer;
       background-color: #fff;
-      box-shadow: 2px 2px 10px 5px rgba(68, 68, 68, 0.2);
-
-      &:hover,
-      &:active {
-
-        .cardDescription {
-          background-color: hsl(202, 100%, 97%);
-        }
-      }
+      box-shadow: 2px 2px 5px rgba(68, 68, 68, 0.2);
+      border: 4px solid #eee;
+      border-top-left-radius: 10px;
+      border-bottom-right-radius: 12px;
 
       .cardDescription {
         width: 70%;
@@ -78,66 +52,77 @@
         width: 30%;
         align-self: center;
         max-height: 200px;
-        
-        img {
-          max-width: 100%;
-          object-fit: cover;
-        }
+      }
+       
+      img {
+        width: 30%;
+        border-radius: 12px;
+
+        object-fit: contain;
+        align-self: center;
       }
 
-    }
-
-    // .sun {
-    //   width: 50rem;
-    //   position: absolute;
-    //   top: 0;
-    //   right: 4rem;
-    // }
-
-    // .triangle {
-    //   width: 15rem;
-    // }
-  }
-
-  @media screen and (max-width: 900px) {
-   
-    .container {
-      flex-direction: column-reverse;
-      padding: 0.5rem;
-
-      .right {
-        max-width: 100%;
-        padding: 0;
-      }
-
-      .center {
-        max-width: 100%;
-        padding: 0 0.2rem;
-        margin-bottom: 3rem;
-      }
-
-      .card {
-        flex-direction: column-reverse;
-        height: fit-content;
+      &:hover,
+      &:active {
 
         .cardDescription {
-          width: 100%;
+          background-color: hsl(202, 100%, 97%);
         }
+      }
+    }
+  }
+  
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 30%;
+    min-width: 30%; 
+    padding: 0 1rem;        
+    
+    a {
+      color: hsl(202, 100%, 34%);
+    }
 
-        .cardPictureContainer {
-          width: 100%;
-          overflow: hidden;
-          max-height: 60vh;
+    .profile {
+      border-radius: 100%;
+      align-self: center;
+      box-shadow: 0 0 20px 5px rgba(68, 68, 68, 0.3);
+      margin: 2.5rem 0 0.5rem 0;
+      align-self: center;
+    }
+  }
+}
 
-          img {
-            width: 100%;
-            max-width: none;
+@media screen and (max-width: 950px) {
+  
+  .container {
+    flex-direction: column-reverse;
+    padding: 0.5rem;
+
+    .right {
+      max-width: 100%;
+    }
+
+    .center {
+      border-top: 1px solid #aaa;
+      max-width: 100%;
+      padding: 0 0.2rem;
+      margin-bottom: 3rem;
+      
+      .card {
+
+        .cardDescription {
+          h2 {
+            font-size: 1.2em;
+          }
+  
+          P {
+            font-size: 1em;
           }
         }
       }
-
     }
   }
-
-
 }
